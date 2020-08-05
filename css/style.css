@@ -34,6 +34,17 @@ a, a:hover { text-decoration: none; color: inherit; }
     font-size: 1.2em;
 }
 
+.sentence {
+    white-space: pre-line;
+    font-size: 2.5em;
+    font-weight: 100;
+    line-height: 1.8em;
+    margin-bottom: 2.5em;
+}
+.sentence strong {
+    font-weight: 600;
+}
+
 /*
  * 박스 디자인 
  */
@@ -69,9 +80,6 @@ a, a:hover { text-decoration: none; color: inherit; }
     height: 100%;
     object-fit: cover;
  }
-
- 
-
 
  .box__text {
     flex: 0 0 50%;
@@ -113,6 +121,55 @@ a, a:hover { text-decoration: none; color: inherit; }
 
  .box__other { margin-top: 2em;}
 
+/* 
+ * 이미지 커버
+ */
+.cover__image {
+    position: absolute; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+.cover__image > [class^="cover__color"], 
+.cover__image > img {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+}
+.cover__image > img { filter: grayscale(100%); }
+.cover__image > .cover__color--red { background-color: #522125ec; }
+
+
+ /*
+  * 이미지 행렬
+  */
+.image__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.image__item {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 300px;
+    opacity: 0.6; transform: translate(0, 0);
+    transition: 0.35s;
+}
+.image__item:hover { opacity: 1; transform: translate(-10px, -10px); }
+
+.image__item > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.image__info {
+    padding: 1em 0;
+}
+
+
 /*
 * 버튼 디자인
 */ 
@@ -122,25 +179,47 @@ button {
     font-size: 0.9em;
 }
 
-.btn-filled {
+.btn--filled {
     background-color: #F22E62;
     color: #fff;
     transition: 0.4s;
 }
-.btn-filled:hover {
+.btn--filled:hover {
     background-color: #888;
 }
 
-.btn-bordered {
+.btn--bordered {
     border: 1px solid #F22E62;
     color: #F22E62;
     background-color: #F22E6200;
     transition: 0.4s;
 }
-
-.btn-bordered:hover {
+.btn--bordered:hover {
     border-color: #888;
     color: #888;
+}
+
+.btn--underline {
+    position: relative;
+    background-color: transparent;
+    border-bottom: 1px solid #F22E62;
+    color: #F22E62;
+    transition: 0.35s;
+}
+.btn--underline::before {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    height: 0; width: 100%;
+    background-color: #fff;
+    transition: 0.35s;
+    z-index: -1;
+}
+.btn--underline:hover {
+    color: #70162e!important;  
+}
+.btn--underline:hover::before {
+    height: 100%;
 }
 
 
@@ -148,6 +227,7 @@ button {
  * 색상
  */ 
 
+.text-white-muted { color: #fffa; }
 .text-red { color: #F22E62; }
 .text-blue { color: #1B80BF; }
 .text-black { color: #333; }
