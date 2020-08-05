@@ -254,10 +254,31 @@ a, a:hover { text-decoration: none; color: inherit; }
 /* 비주얼 애니메이션 */
 
 @keyframes changeImage {
-    0% { opacity: 0; }
-    0% { opacity: 0; }
+    0%      { opacity: 0; }
+    25%     { opacity: 0; }
+
+    33.33%  { opacity: 1; }
+    58.33%  { opacity: 1; }
+
+    66.66%  { opacity: 0; }
+    100%    { opacity: 0; }
 }
 
-.visual__image {
-    
+.visual__image img {  animation: changeImage 12s infinite; }
+.visual__image img:nth-child(1) { animation-delay: -4s; }
+.visual__image img:nth-child(3) { animation-delay: -8s; }
+
+@keyframes changeText {
+    0%      { opacity: 0; margin-top: -100px; }
+    25%     { opacity: 0; margin-top: -100px; }
+
+    33.33%  { opacity: 1; margin-top: 0px; }
+    58.33%  { opacity: 1; margin-top: 0px; }
+
+    66.66%  { opacity: 0; margin-top: 100px; }
+    100%    { opacity: 0; margin-top: 100px; }
 }
+
+.visual__text .text { animation: changeText 12s infinite; }
+.visual__text .text:nth-child(1) { animation-delay: -4s; }
+.visual__text .text:nth-child(3) { animation-delay: -8s; }
