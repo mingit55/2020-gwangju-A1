@@ -12,8 +12,10 @@
 </head>
 <body>
     <!-- 헤더 영역 -->
+    <input type="checkbox" id="open__search" hidden>
+    <input type="checkbox" id="open__nav" hidden>
     <header class="header__container">
-        <div class="header__top">
+        <div class="header__top d-lg-block d-none">
             <div class="container d-between h-100">
                 <!-- 검색 -->
                 <div class="search d-lg-flex d-none">
@@ -40,10 +42,14 @@
         </div>
         <div class="header__bottom">
             <div class="container d-between h-100">
+                <!-- 모바일 검색 -->
+                <label for="open__search" class="icon__search--mobile text-white pb-2">
+                    <i class="fa fa-search"></i>
+                </label>
                 <!-- 로고 -->
                 <a href="#">
                     <img src="./images/logo.svg" title="전북 축제 On!" alt="전북 축제 On!" height="48">
-                </a>
+                </a>   
                 <!-- 메뉴 네비게이션 -->
                 <nav class="nav__menu d-lg-flex d-none">
                     <div class="menu__item"><a href="#">HOME</a></div>
@@ -62,9 +68,54 @@
                         </div>
                     </div>
                 </nav>
+                <!-- 모바일 메뉴 -->
+                <label for="open__nav" class="icon__search--mobile text-white">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+        <div class="header__search d-lg-none">
+            <div class="container d-flex h-100">
+                <span class="icon__search">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text" placeholder="Search">
+                <label for="open__search">
+                    <span></span>
+                    <span></span>
+                </label>
             </div>
         </div>
     </header>
+    <aside class="aside--mobile">
+        <div class="aside__other">
+            <a href="#" class="btn--filled mr-1">로그인</a>
+            <a href="#" class="btn--bordered mr-3">회원가입</a>
+            <a href="#" class="mr-1">전라북도청</a>
+            <select>
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="ch">中文(简体)</option>
+            </select>
+        </div>
+        <nav class="aside__nav">
+            <a href="#">HOME</a>
+            <a href="#">전북 대표 축제</a>
+            <a href="#">축제 정보</a>
+            <a href="#">축제 일정</a>
+            <a href="#">환율안내</a>
+            <a href="#">종합지원센터</a>
+            <div class="aside__subnav">
+                <a href="#">공지사항</a>
+                <a href="#">센터 소개</a>
+                <a href="#">관광정보 문의</a>
+                <a href="#">공공 데이터 개방</a>
+                <a href="#">찾아오시는 길</a>
+            </div>
+        </nav>
+    </aside>
     <!-- /헤더 영역 -->
 
     <!-- 비주얼 영역 -->
@@ -254,10 +305,8 @@
         <div class="container padding">
             <div class="sentence text-white mb-5"><strong>전북 축제</strong>에 대해서
                 잘 모르신다구요?</div>
-            <p class="fx-n1 text-white-muted">
-                걱정 마세요! 그런 당신을 위해 전북 축제에 대해 알 수 있는 축제가이드을 준비했으니까요.<br>
-                전북축제 가이드를 통해 이상적인 휴가를 계획해 보세요!
-            </p>
+            <p class="pre-line fx-n1 text-white-muted">걱정 마세요! 그런 당신을 위해 전북 축제에 대해 알 수 있는 축제가이드을 준비했으니까요.
+                전북축제 가이드를 통해 이상적인 휴가를 계획해 보세요!</p>
             <div class="row mt-5">
                 <div class="col-lg-8 row">
                     <div class="col-lg-4 pb-4">
@@ -447,8 +496,8 @@
 
     <!-- 푸터 영역 -->
     <footer class="bg-black py-3">
-        <div class="container">
-            <div class="text-white-muted fx-n2">
+        <div class="container text-center text-lg-left">
+            <div class="text-white-muted fx-n2 d-flex flex-wrap justify-content-center justify-content-lg-start">
                 <a href="#" class="mr-2">개인정보 처리방침</a>
                 <a href="#" class="mr-2">저작권 보호정책</a>
                 <a href="#" class="mr-2">도로명 주소안내</a>
@@ -456,7 +505,7 @@
             </div>
             <div class="text-muted mt-3">
                 <span class="fx-n2">인천시 부평구 무네미로 448번길 77 한국산업인력공단 글로벌숙련기술진흥원</span>
-                <span class="fx-n3 ml-3">COPYRIGHTⓒ 2016 HRDKOREA</span>
+                <span class="fx-n3 ml-lg-3">COPYRIGHTⓒ 2016 HRDKOREA</span>
             </div>
         </div>
     </footer>
