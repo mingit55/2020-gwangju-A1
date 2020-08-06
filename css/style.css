@@ -39,6 +39,7 @@ hr {
  .text-black { color: #333; }
  .text-muted { color: #777; }
 
+ .bg-black { background-color: #222; }
  .bg-dark { background-color: #353742!important; }
  .bg-red { background-color: #F22E62; }
  .bg-blue { background-color: #1B80BF; }
