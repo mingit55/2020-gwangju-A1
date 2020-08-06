@@ -10,10 +10,19 @@
     box-sizing: border-box;
     font-family: "맑은 고딕", sans-serif;
 }
+html, body { scroll-behavior: smooth; overflow-x: hidden; }
+button, label, a { cursor: pointer; user-select: none; }
 :focus, input, select, textarea { outline: none!important; }
 ol, ul { list-style: none; }
 a, a:hover { text-decoration: none; color: inherit; }
 p { line-height: 1.8em; }
+
+hr {
+    width: 30px;
+    height: 2px;
+    background-color: #F22E62;
+    margin: 2em auto;
+}
 
 .d-between { display: flex; justify-content: space-between; align-items: center; }
 .fit-cover { object-fit: cover; width: 100%; height: 100%; }
@@ -47,8 +56,9 @@ p { line-height: 1.8em; }
 .title h1 strong { font-weight: 600;  font-size: 0.9em; }
 
 .title span {
+    display: inline-block;
     color: #555;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .sentence {
@@ -190,7 +200,7 @@ p { line-height: 1.8em; }
 /*
 * 버튼 디자인
 */ 
-button {
+button, [class*="btn"] {
     border: none;
     padding: 0.5em 1em;
     font-size: 0.9em;
@@ -216,6 +226,32 @@ button {
     color: #888;
 }
 
+.btn__dynamic--bordered { 
+    position: relative; 
+    border: 1px solid #ddd; 
+    color: #888;
+}
+.btn__dynamic--bordered > span {
+    display: block;
+    background-color: #555;
+    position: absolute;
+    transition: 0.4s;
+}
+
+.btn__dynamic--bordered > span:nth-child(2n-1){ width: 0%; height: 1px; }
+.btn__dynamic--bordered > span:nth-child(2n) { height: 0%; width: 1px; }
+
+.btn__dynamic--bordered > span:nth-child(1){ left: -1px; top: -1px; }
+.btn__dynamic--bordered > span:nth-child(2){ right: -1px; top: -1px; }
+.btn__dynamic--bordered > span:nth-child(3){ right: -1px; bottom: -1px; }
+.btn__dynamic--bordered > span:nth-child(4){ left: -1px; bottom: -1px; }
+
+.btn__dynamic--bordered:hover { color: #F22E62; }
+.btn__dynamic--bordered:hover > span { background-color: #F22E62; }
+.btn__dynamic--bordered:hover > span:nth-child(2n-1){ width: 100%; height: 1px; }
+.btn__dynamic--bordered:hover > span:nth-child(2n) { height: 100%; width: 1px; }
+
+
 .btn--underline {
     position: relative;
     background-color: transparent;
@@ -238,7 +274,6 @@ button {
 .btn--underline:hover::before {
     height: 100%;
 }
-
 
 /*
  * 텍스트 크기
@@ -539,3 +574,85 @@ button {
 
 
 /* /축제 가이드 */
+
+
+/* 최근 게시물 */
+.tab__select { 
+    padding: 0 1em;
+    text-align: center; 
+}
+/* .tab__label:not(:last-child) { border-right: none; } */
+
+#tab__notice:checked ~ .tab__select [for="tab__notice"],
+#tab__news:checked ~ .tab__select [for="tab__news"] { color: #F22E62; }
+
+#tab__notice:checked ~ .tab__select [for="tab__notice"] > span,
+#tab__news:checked ~ .tab__select [for="tab__news"] > span { background-color: #F22E62; }
+
+#tab__notice:checked ~ .tab__select [for="tab__notice"] > span:nth-child(2n-1),
+#tab__news:checked ~ .tab__select [for="tab__news"] > span:nth-child(2n-1){ width: 100%; height: 1px; }
+
+#tab__notice:checked ~ .tab__select [for="tab__notice"] > span:nth-child(2n),
+#tab__news:checked ~ .tab__select [for="tab__news"] > span:nth-child(2n) { height: 100%; width: 1px; }
+
+
+.tab__content {
+    position: relative;
+    border-top: 2px solid #F22E62;
+    min-height: 500px;
+}
+
+.tab__content > .content {
+    position: absolute;
+    width: 100%; left: 0;
+}
+
+.news__row {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    border-bottom: 1px solid #ddd;
+    user-select: none;
+    cursor: pointer;
+    transition: 1s;
+}
+.news__row:nth-child(1) { transition-delay: calc(0.15s * 1 - 0.15s); }
+.news__row:nth-child(2) { transition-delay: calc(0.15s * 2 - 0.15s); }
+.news__row:nth-child(3) { transition-delay: calc(0.15s * 3 - 0.15s); }
+.news__row:nth-child(4) { transition-delay: calc(0.15s * 4 - 0.15s); }
+.news__row:nth-child(5) { transition-delay: calc(0.15s * 5 - 0.15s); }
+
+#tab__notice:checked ~ .tab__content .news .news__row { transform: translateX(200px); opacity: 0; }
+#tab__news:checked ~ .tab__content .notice .news__row { transform: translateX(-200px); opacity: 0; }
+
+.news__row > * { transition: 0.35s; }
+.news__row:hover > * { transform: translateX(50px); }
+
+.news__date {
+    width: 150px;
+    text-align: center;
+}
+
+.news__date > strong {
+    display: block;
+    font-size: 1.4em;
+    letter-spacing: 0.03em;
+    color: #F22E62;
+}
+.news__date > span {
+    margin-top: 0.5em;
+    display: block;
+    font-size: 0.8em;
+    color: #555;
+    word-spacing: -0.1em;
+}
+.news__title {
+    font-size: 1.1em;
+    padding-left: 1.5em;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: hidden;
+}
+
+/* /최근 게시물 */
